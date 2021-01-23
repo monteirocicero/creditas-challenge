@@ -1,0 +1,8 @@
+È20:13:18.116 [Test worker] INFO br.com.orecic.creditas.challenge.domain.Order - m=pay ORDER_PROCESSED payment=1610320398116 customer=Josefina Alves address=Rua Pereira do Lago 309 Vila Gomes 05590000
+¼20:13:18.122 [Test worker] INFO br.com.orecic.creditas.challenge.domain.ShippingLabelService - m=generate LABEL address=Rua Pereira do Lago 309 Vila Gomes 05590000 customer=Josefina Alves
+ˆ20:13:18.123 [Test worker] INFO br.com.orecic.creditas.challenge.domain.MemberShipService - m=active ACTIVATION customer=Josefina Alves
+…20:13:18.123 [Test worker] INFO br.com.orecic.creditas.challenge.domain.EmailService - m=notify NOTIFICATION customer=Josefina Alves
+¼20:13:18.123 [Test worker] INFO br.com.orecic.creditas.challenge.domain.ShippingLabelService - m=generate LABEL address=Rua Pereira do Lago 309 Vila Gomes 05590000 customer=Josefina Alves
+~20:13:18.123 [Test worker] INFO br.com.orecic.creditas.challenge.domain.ShippingLabelService - m=generateTaxFee LABEL_TAX_FEE
+…20:13:18.124 [Test worker] INFO br.com.orecic.creditas.challenge.domain.EmailService - m=notify NOTIFICATION customer=Josefina Alves
+ƒ20:13:18.124 [Test worker] INFO br.com.orecic.creditas.challenge.domain.VoucherService - m=generate CREATE customer=Josefina Alves
