@@ -1,8 +1,9 @@
-»20:13:18.116 [Test worker] INFO br.com.orecic.creditas.challenge.domain.Order - m=pay ORDER_PROCESSED payment=1610320398116 customer=Josefina Alves address=Rua Pereira do Lago 309 Vila Gomes 05590000
-º20:13:18.122 [Test worker] INFO br.com.orecic.creditas.challenge.domain.ShippingLabelService - m=generate LABEL address=Rua Pereira do Lago 309 Vila Gomes 05590000 customer=Josefina Alves
-à20:13:18.123 [Test worker] INFO br.com.orecic.creditas.challenge.domain.MemberShipService - m=active ACTIVATION customer=Josefina Alves
-Ö20:13:18.123 [Test worker] INFO br.com.orecic.creditas.challenge.domain.EmailService - m=notify NOTIFICATION customer=Josefina Alves
-º20:13:18.123 [Test worker] INFO br.com.orecic.creditas.challenge.domain.ShippingLabelService - m=generate LABEL address=Rua Pereira do Lago 309 Vila Gomes 05590000 customer=Josefina Alves
-~20:13:18.123 [Test worker] INFO br.com.orecic.creditas.challenge.domain.ShippingLabelService - m=generateTaxFee LABEL_TAX_FEE
-Ö20:13:18.124 [Test worker] INFO br.com.orecic.creditas.challenge.domain.EmailService - m=notify NOTIFICATION customer=Josefina Alves
-É20:13:18.124 [Test worker] INFO br.com.orecic.creditas.challenge.domain.VoucherService - m=generate CREATE customer=Josefina Alves
+Å17:31:53.630 [Test worker] INFO br.com.orecic.creditas.challenge.domain.service.OrderService - m=execute customer=Josefina Alves
+•17:31:53.633 [Test worker] INFO br.com.orecic.creditas.challenge.domain.service.PaymentService - m=pay ORDER_PROCESSED payment=1611433913633 customer=Josefina Alves
+“17:31:53.634 [Test worker] INFO br.com.orecic.creditas.challenge.domain.service.ShippingLabelService - m=generate LABEL address=Av. Paulista, 100 - Bela Vista S√£o Paulo - SP, 01310-000 customer=Josefina Alves
+ê17:31:53.636 [Test worker] INFO br.com.orecic.creditas.challenge.domain.service.MemberShipService - m=active ACTIVATION customer=Josefina Alves
+ç17:31:53.636 [Test worker] INFO br.com.orecic.creditas.challenge.domain.service.EmailService - m=notify NOTIFICATION customer=Josefina Alves
+“17:31:53.636 [Test worker] INFO br.com.orecic.creditas.challenge.domain.service.ShippingLabelService - m=generate LABEL address=Av. Paulista, 100 - Bela Vista S√£o Paulo - SP, 01310-000 customer=Josefina Alves
+Ü17:31:53.636 [Test worker] INFO br.com.orecic.creditas.challenge.domain.service.ShippingLabelService - m=generateTaxFee LABEL_TAX_FEE
+ç17:31:53.637 [Test worker] INFO br.com.orecic.creditas.challenge.domain.service.EmailService - m=notify NOTIFICATION customer=Josefina Alves
+ã17:31:53.637 [Test worker] INFO br.com.orecic.creditas.challenge.domain.service.VoucherService - m=generate CREATE customer=Josefina Alves

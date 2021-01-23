@@ -1,44 +1,46 @@
 package br.com.orecic.creditas.challenge.domain.service
 
 import br.com.orecic.creditas.challenge.domain.*
+import org.slf4j.LoggerFactory
 
 class OrderService {
 
-    fun execute() {
-        val shirt = Product("Flowered t-shirt", ProductType.PHYSICAL, 35.00)
-        val netflix = Product("Familiar plan", ProductType.MEMBERSHIP, 29.90)
-        val book = Product("The Hitchhiker's Guide to the Galaxy", ProductType.BOOK, 120.00)
-        val music = Product("Stairway to Heaven", ProductType.DIGITAL, 5.00)
+    private val paymentService = PaymentService()
+    private val context = Context()
 
-        val order = Order(Customer("Josefina Alves"), Address("Av. Paulista, 100 - Bela Vista São Paulo - SP, 01310-000"))
+    fun execute(order: Order, paymentMethod: PaymentMethod) {
+        logger.info("m=execute customer={}", order.customer.name)
 
-        order.addProduct(shirt, 2)
-        order.addProduct(netflix, 1)
-        order.addProduct(book, 1)
-        order.addProduct(music, 1)
+        val pay = paymentService.pay(order, paymentMethod)
 
-        order.pay(CreditCard("43567890-987654367"))
-        // now, how to deal with shipping rules then?
-        val shippingLabelService = ShippingLabelService()
-        val memberShipService = MemberShipService()
-        val emailService = EmailService()
-        val voucherService = VoucherService()
-
+        if (pay.authorizationNumber > 0) {
+            order.close()
+        }
 
         for (item in order.getItems()) {
-
             when (item.product.type) {
-                ProductType.PHYSICAL -> shippingLabelService.generate(order.address, order.customer)
-                ProductType.MEMBERSHIP -> {
-                    memberShipService.active(order.customer)
-                    emailService.notify(order.customer)
+                ProductType.PHYSICAL -> {
+                    context.set(PhysicalProductStrategy())
+                    context.execute(order)
                 }
-                ProductType.BOOK -> shippingLabelService.generateTaxFee(order.address, order.customer)
+                ProductType.MEMBERSHIP -> {
+                    context.set(MemberShipProductStrategy())
+                    context.execute(order)
+                }
+                ProductType.BOOK -> {
+                    context.set(BookProductStrategy())
+                    context.execute(order)
+
+                }
                 ProductType.DIGITAL -> {
-                    emailService.notify(order.customer)
-                    voucherService.generate(order.customer)
+                    context.set(DigitalProductStrategy())
+                    context.execute(order)
                 }
             }
         }
+    }
+
+    companion object {
+        private val logger = LoggerFactory.getLogger(OrderService::class.java.name)
     }
 }

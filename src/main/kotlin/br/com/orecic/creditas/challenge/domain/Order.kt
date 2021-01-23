@@ -1,18 +1,14 @@
 package br.com.orecic.creditas.challenge.domain
 
-import org.slf4j.LoggerFactory.getLogger
-import java.lang.Exception
 import java.util.*
 
 
 class Order(val customer: Customer, val address: Address) {
 
+
     private val items = mutableListOf<OrderItem>()
 
     var closedAt: Date? = null
-        private set
-
-    var payment: Payment? = null
         private set
 
     val totalAmount
@@ -26,22 +22,7 @@ class Order(val customer: Customer, val address: Address) {
         items.add(OrderItem(product, quantity))
     }
 
-    fun pay(method: PaymentMethod) {
-        if (payment != null)
-            throw Exception("The order has already been paid!")
-
-        if (items.count() == 0)
-            throw Exception("Empty order can not be paid!")
-
-        payment = Payment(this, method)
-
-        close()
-
-        logger.info("m=pay ORDER_PROCESSED payment={} customer={} address={}", payment!!.authorizationNumber, customer.name, address.address)
-
-    }
-
-    private fun close() {
+    internal fun close() {
         closedAt = Date()
     }
     
@@ -49,7 +30,4 @@ class Order(val customer: Customer, val address: Address) {
         return items
     }
 
-    companion object {
-        private val logger = getLogger(Order::class.java.name)
-    }
 }
